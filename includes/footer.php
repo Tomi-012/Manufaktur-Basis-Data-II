@@ -7,7 +7,7 @@
     <script>
         // Auto hide alerts after 5 seconds
         setTimeout(function() {
-            let alerts = document.querySelectorAll('.alert');
+            let alerts = document.querySelectorAll('.alert-dismissible');
             alerts.forEach(function(alert) {
                 let bsAlert = new bootstrap.Alert(alert);
                 bsAlert.close();
