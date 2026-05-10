@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 10, 2026 at 02:11 PM
+-- Generation Time: May 10, 2026 at 02:48 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -53,7 +53,10 @@ INSERT INTO `bill_of_materials` (`id`, `product_id`, `material_id`, `jumlah_dibu
 (12, 3, 3, '2.00'),
 (13, 3, 5, '1.00'),
 (14, 3, 8, '1.00'),
-(15, 3, 9, '2.00');
+(15, 3, 9, '2.00'),
+(16, 4, 5, '2.00'),
+(18, 4, 2, '2.00'),
+(19, 4, 10, '5.00');
 
 -- --------------------------------------------------------
 
@@ -125,7 +128,22 @@ INSERT INTO `log_aktivitas` (`id`, `user_id`, `aksi`, `tabel_referensi`, `refere
 (25, 1, 'edit_material', 'materials', 10, 'Mengupdate material: Kulit Jerapah', '2026-05-10 14:10:06'),
 (26, 1, 'tolak_produksi', 'produksi', 5, 'Menolak produksi 11 unit Tas Selempang Casual - stok material dikembalikan', '2026-05-10 14:10:39'),
 (27, 1, 'logout', NULL, NULL, 'User logout dari sistem', '2026-05-10 14:10:45'),
-(28, 3, 'login', NULL, NULL, 'User login ke sistem', '2026-05-10 14:10:51');
+(28, 3, 'login', NULL, NULL, 'User login ke sistem', '2026-05-10 14:10:51'),
+(29, 3, 'logout', NULL, NULL, 'User logout dari sistem', '2026-05-10 14:19:04'),
+(30, 1, 'login', NULL, NULL, 'User login ke sistem', '2026-05-10 14:19:09'),
+(31, 1, 'edit_produk', 'products', 3, 'Mengupdate produk: Tas Laptop 15 inch', '2026-05-10 14:21:09'),
+(32, 1, 'tambah_produk', 'products', 4, 'Menambahkan produk baru: Tas Selempang', '2026-05-10 14:21:44'),
+(33, 1, 'logout', NULL, NULL, 'User logout dari sistem', '2026-05-10 14:22:02'),
+(34, 2, 'login', NULL, NULL, 'User login ke sistem', '2026-05-10 14:22:09'),
+(35, 2, 'material_masuk', 'material_masuk', 0, 'Menambah stok Kain Cordura 1000D sebanyak 100', '2026-05-10 14:22:18'),
+(36, 2, 'material_masuk', 'material_masuk', 0, 'Menambah stok Kulit Jerapah sebanyak 102', '2026-05-10 14:22:23'),
+(37, 2, 'logout', NULL, NULL, 'User logout dari sistem', '2026-05-10 14:22:40'),
+(38, 3, 'login', NULL, NULL, 'User login ke sistem', '2026-05-10 14:22:44'),
+(39, 3, 'logout', NULL, NULL, 'User logout dari sistem', '2026-05-10 14:23:20'),
+(40, 1, 'login', NULL, NULL, 'User login ke sistem', '2026-05-10 14:23:27'),
+(41, 1, 'logout', NULL, NULL, 'User logout dari sistem', '2026-05-10 14:25:15'),
+(42, 3, 'login', NULL, NULL, 'User login ke sistem', '2026-05-10 14:25:21'),
+(43, 3, 'produksi', 'produksi', 6, 'Mengajukan produksi 1 unit Tas Selempang (menunggu validasi)', '2026-05-10 14:25:31');
 
 -- --------------------------------------------------------
 
@@ -148,16 +166,16 @@ CREATE TABLE `materials` (
 --
 
 INSERT INTO `materials` (`id`, `kategori_id`, `nama_material`, `satuan`, `stok`, `stok_minimum`, `created_at`) VALUES
-(1, 1, 'Kain Cordura 1000D', 'meter', '14.50', '20.00', '2026-05-10 13:30:55'),
-(2, 1, 'Kain Canvas', 'meter', '59.00', '15.00', '2026-05-10 13:30:55'),
+(1, 1, 'Kain Cordura 1000D', 'meter', '114.50', '20.00', '2026-05-10 13:30:55'),
+(2, 1, 'Kain Canvas', 'meter', '57.00', '15.00', '2026-05-10 13:30:55'),
 (3, 2, 'Gesper Plastik', 'pcs', '368.00', '100.00', '2026-05-10 13:30:55'),
 (4, 2, 'Gesper Metal', 'pcs', '258.00', '50.00', '2026-05-10 13:30:55'),
-(5, 3, 'Benang Nilon Hitam', 'roll', '11.00', '10.00', '2026-05-10 13:30:55'),
+(5, 3, 'Benang Nilon Hitam', 'roll', '9.00', '10.00', '2026-05-10 13:30:55'),
 (6, 3, 'Benang Nilon Putih', 'roll', '19.00', '10.00', '2026-05-10 13:30:55'),
 (7, 4, 'Resleting 30cm', 'pcs', '125.00', '50.00', '2026-05-10 13:30:55'),
 (8, 4, 'Resleting 50cm', 'pcs', '138.00', '30.00', '2026-05-10 13:30:55'),
 (9, 5, 'Tali Webbing 2.5cm', 'meter', '63.50', '40.00', '2026-05-10 13:30:55'),
-(10, 1, 'Kulit Jerapah', 'meter', '0.00', '10.00', '2026-05-10 14:09:52');
+(10, 1, 'Kulit Jerapah', 'meter', '97.00', '10.00', '2026-05-10 14:09:52');
 
 -- --------------------------------------------------------
 
@@ -173,6 +191,14 @@ CREATE TABLE `material_masuk` (
   `keterangan` text,
   `tanggal` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `material_masuk`
+--
+
+INSERT INTO `material_masuk` (`id`, `material_id`, `user_id`, `jumlah`, `keterangan`, `tanggal`) VALUES
+(1, 1, 2, '100.00', '', '2026-05-10 14:22:18'),
+(2, 10, 2, '102.00', '', '2026-05-10 14:22:23');
 
 -- --------------------------------------------------------
 
@@ -195,7 +221,8 @@ CREATE TABLE `products` (
 INSERT INTO `products` (`id`, `nama_produk`, `deskripsi`, `stok`, `created_at`) VALUES
 (1, 'Tas Ransel Outdoor', 'Tas ransel untuk kegiatan outdoor dengan kapasitas 40L', 23, '2026-05-10 13:30:55'),
 (2, 'Tas Selempang Casual', 'Tas selempang untuk kegiatan sehari-hari', 21, '2026-05-10 13:30:55'),
-(3, 'Tas Laptop 15 inch', 'Tas laptop dengan padding khusus', 12, '2026-05-10 13:30:55');
+(3, 'Tas Laptop 15 inch', 'Tas laptop dengan padding khusus', 12, '2026-05-10 13:30:55'),
+(4, 'Tas Selempang', 'kualitas nomor 1', 0, '2026-05-10 14:21:44');
 
 -- --------------------------------------------------------
 
@@ -221,7 +248,8 @@ INSERT INTO `produksi` (`id`, `product_id`, `user_id`, `jumlah_produksi`, `statu
 (2, 3, 3, 12, 'selesai', '2026-05-10 13:46:37'),
 (3, 2, 3, 21, 'selesai', '2026-05-10 13:47:51'),
 (4, 1, 3, 4, 'proses', '2026-05-10 13:53:32'),
-(5, 2, 3, 11, 'gagal', '2026-05-10 13:53:49');
+(5, 2, 3, 11, 'gagal', '2026-05-10 13:53:49'),
+(6, 4, 3, 1, 'proses', '2026-05-10 14:25:31');
 
 -- --------------------------------------------------------
 
@@ -265,7 +293,10 @@ INSERT INTO `produksi_detail` (`id`, `produksi_id`, `material_id`, `jumlah_terpa
 (22, 5, 4, '22.00'),
 (23, 5, 6, '11.00'),
 (24, 5, 7, '11.00'),
-(25, 5, 9, '16.50');
+(25, 5, 9, '16.50'),
+(26, 6, 5, '2.00'),
+(27, 6, 2, '2.00'),
+(28, 6, 10, '5.00');
 
 -- --------------------------------------------------------
 
@@ -370,7 +401,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bill_of_materials`
 --
 ALTER TABLE `bill_of_materials`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `kategori_material`
@@ -382,7 +413,7 @@ ALTER TABLE `kategori_material`
 -- AUTO_INCREMENT for table `log_aktivitas`
 --
 ALTER TABLE `log_aktivitas`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `materials`
@@ -394,25 +425,25 @@ ALTER TABLE `materials`
 -- AUTO_INCREMENT for table `material_masuk`
 --
 ALTER TABLE `material_masuk`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `produksi`
 --
 ALTER TABLE `produksi`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `produksi_detail`
 --
 ALTER TABLE `produksi_detail`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `users`
