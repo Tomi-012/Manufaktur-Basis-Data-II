@@ -1,29 +1,8 @@
-# Manufaktur Tas - Git Ignore File
-
-# Configuration files with sensitive data
-config/database.php
 
 # Log files
 *.log
 logs/
 error.log
-
-# Temporary files
-*.tmp
-*.temp
-*.swp
-*.swo
-*~
-
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-desktop.ini
 
 # IDE files
 .vscode/
@@ -33,17 +12,6 @@ desktop.ini
 .project
 .settings/
 
-# Backup files
-*.bak
-*.backup
-*.old
-backup/
-backups/
-
-# Upload directories (if you add file upload feature)
-uploads/
-files/
-
 # Cache directories
 cache/
 tmp/
@@ -51,27 +19,3 @@ tmp/
 # Node modules (if you add npm)
 node_modules/
 package-lock.json
-
-# Composer (if you add composer)
-vendor/
-composer.lock
-
-# Environment files
-.env
-.env.local
-.env.production
-
-# Database dumps (except the initial one)
-*.sql
-!database.sql
-!update_database.sql
-
-# Screenshots (optional - uncomment if you don't want to commit screenshots)
-# screenshots/
-# *.png
-# *.jpg
-# *.jpeg
-
-# Documentation build files
-docs/_build/
-site/
