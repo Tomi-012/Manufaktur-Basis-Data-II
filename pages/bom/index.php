@@ -65,8 +65,11 @@ include '../../includes/header.php';
     <div class="col-md-8">
         <?php if ($selected_product): ?>
         <div class="card">
-            <div class="card-header">
-                <i class="bi bi-list-check"></i> BOM: <?php echo htmlspecialchars($selected_product['nama_produk']); ?>
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <span><i class="bi bi-list-check"></i> BOM: <?php echo htmlspecialchars($selected_product['nama_produk']); ?></span>
+                <a href="tambah.php?product_id=<?php echo $selected_product['id']; ?>" class="btn btn-sm btn-primary">
+                    <i class="bi bi-plus-circle"></i> Tambah Material
+                </a>
             </div>
             <div class="card-body">
                 <?php if (empty($bom_items)): ?>
@@ -82,6 +85,7 @@ include '../../includes/header.php';
                                 <th>Material</th>
                                 <th>Jumlah Dibutuhkan</th>
                                 <th>Satuan</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -91,6 +95,13 @@ include '../../includes/header.php';
                                 <td><?php echo htmlspecialchars($item['nama_material']); ?></td>
                                 <td><strong><?php echo number_format($item['jumlah_dibutuhkan'], 2); ?></strong></td>
                                 <td><?php echo htmlspecialchars($item['satuan']); ?></td>
+                                <td>
+                                    <a href="hapus.php?id=<?php echo $item['id']; ?>&product_id=<?php echo $product_id; ?>" 
+                                       class="btn btn-sm btn-danger" 
+                                       onclick="return confirm('Hapus material ini dari BOM?');">
+                                        <i class="bi bi-trash"></i> Hapus
+                                    </a>
+                                </td>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>

@@ -15,6 +15,11 @@ include '../../includes/header.php';
 
 <div class="page-header">
     <h2><i class="bi bi-bag"></i> Products</h2>
+    <?php if ($_SESSION['role'] == 'administrator'): ?>
+    <a href="tambah.php" class="btn btn-primary">
+        <i class="bi bi-plus-circle"></i> Tambah Produk Baru
+    </a>
+    <?php endif; ?>
 </div>
 
 <div class="card">
@@ -49,6 +54,9 @@ include '../../includes/header.php';
                         <td>
                             <a href="/Manufaktur/pages/bom/index.php?product_id=<?php echo $p['id']; ?>" class="btn btn-sm btn-info">
                                 <i class="bi bi-list-check"></i> BOM
+                            </a>
+                            <a href="edit.php?id=<?php echo $p['id']; ?>" class="btn btn-sm btn-warning">
+                                <i class="bi bi-pencil-square"></i> Edit
                             </a>
                         </td>
                         <?php endif; ?>
